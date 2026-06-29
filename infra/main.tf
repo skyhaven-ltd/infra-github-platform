@@ -13,8 +13,13 @@ resource "github_repository" "this" {
   allow_squash_merge     = true
   allow_merge_commit     = false
   allow_rebase_merge     = false
-  allow_auto_merge       = false
-  delete_branch_on_merge = false
+  allow_auto_merge       = true
+  delete_branch_on_merge = true
+  allow_update_branch    = true
+
+  # Squash commits default to the pull request title (no body).
+  squash_merge_commit_title   = "PR_TITLE"
+  squash_merge_commit_message = "BLANK"
 
   security_and_analysis {
     secret_scanning {
@@ -95,11 +100,39 @@ resource "github_repository_ruleset" "default_branch" {
     non_fast_forward = true
 
     pull_request {
+      # Solo org: no required reviewer count, but enforce the review hygiene rules.
       required_approving_review_count   = 0
-      dismiss_stale_reviews_on_push     = false
       require_code_owner_review         = false
-      require_last_push_approval        = false
-      required_review_thread_resolution = false
+      dismiss_stale_reviews_on_push     = true
+      require_last_push_approval        = true
+      required_review_thread_resolution = true
+      allowed_merge_methods             = ["squash"]
+    }
+  }
+}
+
+# Branch-naming convention: every non-default branch must start with one of the
+# allowed prefixes. Enforced as a separate ruleset because name-pattern rules
+# cannot target the default branch (main is excluded below).
+resource "github_repository_ruleset" "branch_naming" {
+  for_each = github_repository.this
+
+  name        = "branch-naming-convention"
+  repository  = each.value.name
+  target      = "branch"
+  enforcement = "active"
+
+  conditions {
+    ref_name {
+      include = ["~ALL"]
+      exclude = ["~DEFAULT_BRANCH"]
+    }
+  }
+
+  rules {
+    branch_name_pattern {
+      operator = "regex"
+      pattern  = "^(major|minor|patch|feature|hotfix)/"
     }
   }
 }
