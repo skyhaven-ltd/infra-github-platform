@@ -1,6 +1,3 @@
-github_owner = "skyhaven-ltd"
-
-# Add a repository by adding a line here. Empty object = full standard baseline.
 repositories = {
   ".github"                     = {}
   "infra-engineering-template"  = {}
