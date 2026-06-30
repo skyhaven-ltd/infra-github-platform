@@ -97,6 +97,19 @@ jobs:
         run: |
           terraform -chdir=infra destroy -auto-approve -var-file="vars/global.tfvars"
 
+      - name: "Link Repositories to Project Board"
+        if: inputs.terraform_action == 'apply'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          PROJECT_NUMBER: "1"
+          PROJECT_OWNER: skyhaven-ltd
+        run: |
+          repos=$(terraform -chdir=infra output -json repository_names | jq -r '.[]')
+          for repo in $repos; do
+            echo "Linking $repo to project $PROJECT_NUMBER..."
+            gh project link "$PROJECT_NUMBER" --owner "$PROJECT_OWNER" --repo "$repo"
+          done
+
       - name: "Break State Lease"
         if: always()
         uses: ./.github/actions/break-tfstate-lease
