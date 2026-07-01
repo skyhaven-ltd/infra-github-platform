@@ -29,7 +29,7 @@ resource "github_repository" "this" {
   }
 
   lifecycle {
-    prevent_destroy = false
+    prevent_destroy = true
     ignore_changes = [auto_init, template]
   }
 }
