@@ -9,5 +9,6 @@ repositories = {
   "app-cvengine-portfolio"      = {}
   "app-powertoggle-vm"          = {}
   "app-braveart-gallery"        = {}
+  "app-stockalert-monitor"      = {}
   "infra-github-platform"       = {}
 }

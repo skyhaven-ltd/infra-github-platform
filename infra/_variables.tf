@@ -16,8 +16,8 @@ variable "repositories" {
       for name in keys(var.repositories) :
       # Special GitHub repository, exempt from the convention.
       contains([".github"], name) ||
-      can(regex("^(app|infra|data|docs)-(braveart|certwatch|cvengine|powertoggle|learning|landingzone|github|homelab|developer|engineering)-([a-z0-9]+(-[a-z0-9]+)*)$", name)) ||
-      can(regex("^(module|pipeline)-(braveart|certwatch|cvengine|powertoggle|learning|landingzone|github|homelab|developer|engineering)-([a-z0-9]+(-[a-z0-9]+)*)-(terraform|bicep|ansible|kubernetes|helm|docker|node|dotnet|python|powershell)$", name))
+      can(regex("^(app|infra|data|docs)-(braveart|certwatch|cvengine|powertoggle|learning|stockalert|landingzone|github|homelab|developer|engineering)-([a-z0-9]+(-[a-z0-9]+)*)$", name)) ||
+      can(regex("^(module|pipeline)-(braveart|certwatch|cvengine|powertoggle|learning|stockalert|landingzone|github|homelab|developer|engineering)-([a-z0-9]+(-[a-z0-9]+)*)-(terraform|bicep|ansible|kubernetes|helm|docker|node|dotnet|python|powershell)$", name))
     ])
     error_message = "One or more repository names violate the naming standard <type>-<domain>-<component>[-<qualifier>]. type: app|infra|module|pipeline|data|docs; domain and qualifier must come from the registered vocabularies; module and pipeline require a technology qualifier. See skyhaven-ltd/.github/standards/repo-naming.md."
   }
