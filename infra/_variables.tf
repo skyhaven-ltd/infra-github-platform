@@ -15,8 +15,7 @@ variable "repositories" {
   # skyhaven-ltd/.github/standards/repo-naming.spec.yml — keep the vocabularies
   # and grammar below in sync with that file.
   #
-  # A name is valid when it is exempt (.github), grandfathered (legacy names
-  # awaiting rename), or matches the grammar:
+  # A name is valid when it is exempt (.github) or matches the grammar:
   #   module/pipeline: <type>-<domain>-<component>-<qualifier>   (qualifier required)
   #   app/infra/data/docs: <type>-<domain>-<component>           (qualifier optional)
   validation {
@@ -24,15 +23,6 @@ variable "repositories" {
       for name in keys(var.repositories) :
       # Special GitHub repository, exempt from the convention.
       contains([".github"], name) ||
-      # Pre-existing names, grandfathered until renamed. Not for new repos.
-      contains([
-        "solution-braveart-gallery",
-        "solution-certwatch-web",
-        "solution-cvengine-portfolio",
-        "solution-powertoggle-vm",
-        "ops-developer-config",
-        "ops-homelab-config",
-      ], name) ||
       # app / infra / data / docs — qualifier optional.
       can(regex("^(app|infra|data|docs)-(braveart|certwatch|cvengine|powertoggle|learning|landingzone|github|homelab|developer|engineering)-([a-z0-9]+(-[a-z0-9]+)*)$", name)) ||
       # module / pipeline — technology qualifier mandatory.
