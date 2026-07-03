@@ -11,4 +11,7 @@ repositories = {
   "app-braveart-gallery"        = {}
   "app-stockalert-monitor"      = {}
   "infra-github-platform"       = {}
+  "pipeline-engineering-github-actions" = {
+    description = "Reusable GitHub Actions workflows and composite actions shared across the Sky Haven organisation."
+  }
 }

@@ -34,6 +34,20 @@ resource "github_repository" "this" {
   }
 }
 
+# Allow reusable workflows and composite actions in private/internal repos to be
+# consumed by other repositories in the organisation. Public repositories already
+# share their Actions org-wide, so this setting only applies where visibility is
+# not public (e.g. pipeline-engineering-github-actions if it is ever made private).
+resource "github_actions_repository_access_level" "this" {
+  for_each = {
+    for name, repo in github_repository.this : name => repo
+    if repo.visibility != "public"
+  }
+
+  repository   = each.value.name
+  access_level = "organization"
+}
+
 resource "github_repository_vulnerability_alerts" "this" {
   for_each = github_repository.this
 
