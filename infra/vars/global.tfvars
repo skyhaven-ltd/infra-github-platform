@@ -11,4 +11,5 @@ repositories = {
   "app-braveart-gallery"        = {}
   "app-stockalert-monitor"      = {}
   "infra-github-platform"       = {}
+  "pipeline-engineering-github-actions" = {}
 }
