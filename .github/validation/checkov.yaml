@@ -1,3 +1,4 @@
 skip-check:
   - CKV_GHA_7 # workflow_dispatch inputs are intentional (plan/apply/destroy selection)
   - CKV_GIT_1 # repositories are intentionally public (portfolio organisation)
+  - CKV2_GIT_1 # branch protection is enforced via github_repository_ruleset, which this graph check does not recognise (only detects legacy github_branch_protection)
