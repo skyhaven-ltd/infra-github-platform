@@ -1,8 +1,10 @@
 repositories = {
-  ".github"                             = {}
-  "infra-engineering-template"          = {}
-  "infra-landingzone-platform"          = {}
-  "infra-developer-config"              = {}
+  ".github"                    = {}
+  "infra-engineering-template" = {}
+  "infra-landingzone-platform" = {}
+  "infra-developer-config" = {
+    require_pull_request = false
+  }
   "infra-homelab-config"                = {}
   "app-learning-review"                 = {}
   "app-certwatch-web"                   = {}
