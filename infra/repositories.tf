@@ -67,13 +67,19 @@ resource "github_repository_ruleset" "default_branch" {
     deletion         = true
     non_fast_forward = true
 
-    pull_request {
-      required_approving_review_count   = 0
-      require_code_owner_review         = false
-      dismiss_stale_reviews_on_push     = true
-      require_last_push_approval        = false
-      required_review_thread_resolution = true
-      allowed_merge_methods             = ["squash"]
+    # Repos with require_pull_request = false accept direct pushes to main
+    # but keep the deletion and force-push protections above.
+    dynamic "pull_request" {
+      for_each = var.repositories[each.key].require_pull_request ? [1] : []
+
+      content {
+        required_approving_review_count   = 0
+        require_code_owner_review         = false
+        dismiss_stale_reviews_on_push     = true
+        require_last_push_approval        = false
+        required_review_thread_resolution = true
+        allowed_merge_methods             = ["squash"]
+      }
     }
   }
 }

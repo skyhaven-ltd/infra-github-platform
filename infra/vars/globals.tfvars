@@ -2,7 +2,11 @@ repositories = {
   ".github"                             = {}
   "infra-engineering-template"          = {}
   "infra-landingzone-platform"          = {}
-  "infra-developer-config"              = {}
+  "infra-developer-config" = {
+    # Developer-machine config repo: small operational fixes are pushed
+    # straight to main from the machines it manages.
+    require_pull_request = false
+  }
   "infra-homelab-config"                = {}
   "app-learning-review"                 = {}
   "app-certwatch-web"                   = {}

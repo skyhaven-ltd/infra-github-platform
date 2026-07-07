@@ -23,8 +23,9 @@ variable "github_app_pem" {
 variable "repositories" {
   description = "Repositories managed under the organisation. Map key is the repository name; each repo inherits the standard baseline defined in main.tf unless a field is overridden here."
   type = map(object({
-    description = optional(string, "")
-    visibility  = optional(string, "public")
+    description          = optional(string, "")
+    visibility           = optional(string, "public")
+    require_pull_request = optional(bool, true)
   }))
 
   validation {
