@@ -1,7 +1,7 @@
 repositories = {
-  ".github"                             = {}
-  "infra-engineering-template"          = {}
-  "infra-landingzone-platform"          = {}
+  ".github"                    = {}
+  "infra-engineering-template" = {}
+  "infra-landingzone-platform" = {}
   "infra-developer-config" = {
     # Developer-machine config repo: small operational fixes are pushed
     # straight to main from the machines it manages.
