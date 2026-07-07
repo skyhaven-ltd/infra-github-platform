@@ -31,7 +31,6 @@ variable "repositories" {
   validation {
     condition = alltrue([
       for name in keys(var.repositories) :
-      # Special GitHub repository, exempt from the convention.
       contains([".github"], name) ||
       can(regex("^(app|infra|data|docs)-(braveart|certwatch|cvengine|powertoggle|learning|stockalert|landingzone|github|homelab|developer|engineering)-([a-z0-9]+(-[a-z0-9]+)*)$", name)) ||
       can(regex("^(module|pipeline)-(braveart|certwatch|cvengine|powertoggle|learning|stockalert|landingzone|github|homelab|developer|engineering)-([a-z0-9]+(-[a-z0-9]+)*)-(terraform|bicep|ansible|kubernetes|helm|docker|node|dotnet|python|powershell|actions)$", name))

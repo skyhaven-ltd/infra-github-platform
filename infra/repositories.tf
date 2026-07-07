@@ -67,8 +67,6 @@ resource "github_repository_ruleset" "default_branch" {
     deletion         = true
     non_fast_forward = true
 
-    # Repos with require_pull_request = false accept direct pushes to main
-    # but keep the deletion and force-push protections above.
     dynamic "pull_request" {
       for_each = var.repositories[each.key].require_pull_request ? [1] : []
 
