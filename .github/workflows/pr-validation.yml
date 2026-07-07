@@ -15,12 +15,10 @@ permissions:
 
 jobs:
   Validate:
-    uses: skyhaven-ltd/pipeline-engineering-github-actions/.github/workflows/reusable-terraform.yml@6cfa143b42ff464e4101d69c09945db9fac369e5 # v2.0.0
+    uses: skyhaven-ltd/pipeline-engineering-github-actions/.github/workflows/reusable-terraform.yml@6cfa143b42ff464e4101d69c09945db9fac369e5
     with:
       environments: '["prd"]'
       terraform_version: "1.15.3"
-      # The github provider authenticates as the platform GitHub App via
-      # app_auth in _providers.tf, fed by these plan-time TF_VARs.
       tf_var_secrets: |
         TF_VAR_github_app_id=github-platform-gh-app-id
         TF_VAR_github_app_installation_id=github-platform-gh-app-installation-id
