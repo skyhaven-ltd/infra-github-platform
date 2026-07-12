@@ -12,7 +12,7 @@ repositories = {
   "app-powertoggle-vm"                  = {}
   "app-braveart-gallery"                = {}
   "app-stockalert-monitor"              = {}
-  "app-bookbuddy-web" = {}
+  "app-bookbuddy-web"                   = {}
   "infra-github-platform"               = {}
   "pipeline-engineering-github-actions" = {}
 }
