@@ -12,6 +12,9 @@ repositories = {
   "app-powertoggle-vm"                  = {}
   "app-braveart-gallery"                = {}
   "app-stockalert-monitor"              = {}
+  "app-bookbuddy-web" = {
+    description = "BookBuddy - a 'Make It Stick' reading companion"
+  }
   "infra-github-platform"               = {}
   "pipeline-engineering-github-actions" = {}
 }
