@@ -5,17 +5,17 @@ variable "github_owner" {
 }
 
 variable "github_app_id" {
-  description = "GitHub App ID used by the github provider (Key Vault: github-platform-gh-app-id)."
+  description = "GitHub App ID used by the github provider (Key Vault: platform-github-app-id)."
   type        = string
 }
 
 variable "github_app_installation_id" {
-  description = "Installation ID of the GitHub App on the organisation (Key Vault: github-platform-gh-app-installation-id)."
+  description = "Installation ID of the GitHub App on the organisation (Key Vault: platform-github-app-installation-id)."
   type        = string
 }
 
 variable "github_app_pem" {
-  description = "PEM private key of the GitHub App (Key Vault: github-platform-gh-app-private-key)."
+  description = "PEM private key of the GitHub App (Key Vault: platform-github-app-private-key)."
   type        = string
   sensitive   = true
 }

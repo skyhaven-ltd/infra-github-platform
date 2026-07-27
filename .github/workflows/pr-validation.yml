@@ -20,6 +20,6 @@ jobs:
       environments: '["prd"]'
       terraform_version: "1.15.3"
       tf_var_secrets: |
-        TF_VAR_github_app_id=github-platform-gh-app-id
-        TF_VAR_github_app_installation_id=github-platform-gh-app-installation-id
-        TF_VAR_github_app_pem=github-platform-gh-app-private-key
+        TF_VAR_github_app_id=platform-github-app-id
+        TF_VAR_github_app_installation_id=platform-github-app-installation-id
+        TF_VAR_github_app_pem=platform-github-app-private-key
