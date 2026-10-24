@@ -7,6 +7,7 @@ repositories = {
   "app-cvengine-portfolio"              = {}
   "app-powertoggle-vm"                  = {}
   "app-braveart-gallery"                = {}
+  "app-goodnews-web"                    = {}
   "infra-github-platform"               = {}
   "pipeline-engineering-github-actions" = {}
   "infra-developer-config" = {
